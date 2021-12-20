@@ -10,23 +10,23 @@ sharedMappings.register(
 
 module.exports = {
   output: {
-    uniqueName: "flightApp",
-    publicPath: "auto"
+    uniqueName: 'flightApp',
+    publicPath: 'auto',
   },
   optimization: {
-    runtimeChunk: false
+    runtimeChunk: false,
   },
   resolve: {
     alias: {
       ...sharedMappings.getAliases(),
-    }
+    },
   },
   // experiments: {
-  //   outputModule: true
+  //   outputModule: true,
   // },
   plugins: [
     new ModuleFederationPlugin({
-        // library: { type: "module" },
+      // library: { type: 'module'},
 
         // For remotes (please adjust)
         // name: "flightApp",
@@ -36,24 +36,22 @@ module.exports = {
         // },
 
         // For hosts (please adjust)
-        remotes: {
+      remotes: {
         //     "dashboard": "http://localhost:4200/remoteEntry.js",
         //     "external": "http://localhost:4200/remoteEntry.js",
         //     "flightAdmin": "http://localhost:4200/remoteEntry.js",
         //     "luggage": "http://localhost:4200/remoteEntry.js",
-            "passenger": "passenger@http://localhost:3000/remoteEntry.js",
+          "passenger": "passenger@http://localhost:3000/remoteEntry.js",
+      },
 
-        },
+      shared: share({
+        '@angular/core': {singleton: true, strictVersion: true, requiredVersion: 'auto'},
+        '@angular/common': {singleton: true, strictVersion: true, requiredVersion: 'auto'},
+        '@angular/common/http': {singleton: true, strictVersion: true, requiredVersion: 'auto'},
+        '@angular/router': {singleton: true, strictVersion: true, requiredVersion: 'auto'},
 
-        shared: share({
-          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-
-          ...sharedMappings.getDescriptors()
-        })
-
+        ...sharedMappings.getDescriptors(),
+      }),
     }),
     sharedMappings.getPlugin()
   ],

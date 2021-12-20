@@ -8,16 +8,25 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es2020",
     "module": "esnext",
-    "lib": ["es2017", "dom"],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@flight-workspace/dashboard-lib": ["libs/dashboard-lib/src/index.ts"],
-      "@flight-workspace/flight-lib": ["libs/flight-lib/src/index.ts"],
-      "@flight-workspace/luggage/domain": ["libs/luggage/domain/src/index.ts"],
+      "@flight-workspace/dashboard-lib": [
+        "libs/dashboard-lib/src/index.ts"
+      ],
+      "@flight-workspace/flight-lib": [
+        "libs/flight-lib/src/index.ts"
+      ],
+      "@flight-workspace/luggage/domain": [
+        "libs/luggage/domain/src/index.ts"
+      ],
       "@flight-workspace/luggage/feature-checkin": [
         "libs/luggage/feature-checkin/src/index.ts"
       ],
@@ -36,8 +45,13 @@
       "@flight-workspace/passenger/feature-search": [
         "libs/passenger/feature-search/src/index.ts"
       ],
-      "@flight-workspace/shared-logger": ["libs/shared/logger/src/index.ts"]
+      "@flight-workspace/shared-logger": [
+        "libs/shared/logger/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

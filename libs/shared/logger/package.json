@@ -1,5 +1,5 @@
 {
-  "name": "@flight-workspace/logger-lib",
+  "name": "@flight-workspace/shared-logger",
   "version": "35.0.1",
   "peerDependencies": {
     "@angular/common": "^12.0.0",

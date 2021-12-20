@@ -6,5 +6,5 @@ export * from './lib/logger.service';
 export * from './lib/log-monitor.component';
 export * from './lib/logger.module';
 
-export { LogFormatterService } from './lib/log-formatter.service';
-export { DefaultLogFormatterService } from './lib/default-log-formatter.service';
+export * from './lib/log-formatter.service';
+export * from './lib/default-log-formatter.service';

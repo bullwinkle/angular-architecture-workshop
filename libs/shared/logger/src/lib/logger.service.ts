@@ -7,12 +7,10 @@ import { LoggerConfig } from './logger.config';
   providedIn: 'root',
 })
 export class LoggerService {
-
   constructor(
     @Optional() private config: LoggerConfig,
-    private logFormatter: LogFormatterService,
-  ) {
-  }
+    private logFormatter: LogFormatterService
+  ) {}
 
   debug(message: string): void {
     if (!this.config.enableDebug) return;

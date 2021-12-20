@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { FlightLibModule } from '@flight-workspace/flight-lib';
-import { LoggerModule } from '@flight-workspace/logger-lib';
+import { LoggerModule } from '@flight-workspace/shared-logger';
 
 import { AppComponent } from './app.component';
 import { APP_ROUTES } from './app.routes';
@@ -39,11 +39,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     SidebarComponent,
     NavbarComponent,
     HomeComponent,
-    BasketComponent
+    BasketComponent,
   ],
-  providers: [
-
-  ],
-  bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

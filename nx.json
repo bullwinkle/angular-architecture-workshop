@@ -80,6 +80,9 @@
       "tags": [],
       "implicitDependencies": ["luggage"]
     },
+    "luggage-feature-checkin": {
+      "tags": ["domain:luggage", "type:feature"]
+    },
     "passenger": {
       "tags": ["domain:passenger", "type:app"]
     },

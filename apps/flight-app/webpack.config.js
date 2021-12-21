@@ -1,9 +1,8 @@
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-const mf = require("@angular-architects/module-federation/webpack");
-const path = require("path");
-const share = mf.share;
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const {share, SharedMappings} = require('@angular-architects/module-federation/webpack');
+const path = require('path');
 
-const sharedMappings = new mf.SharedMappings();
+const sharedMappings = new SharedMappings();
 sharedMappings.register(
   path.join(__dirname, '../../tsconfig.base.json'),
   ['@flight-workspace/shared/auth-lib'],
@@ -22,27 +21,14 @@ module.exports = {
       ...sharedMappings.getAliases(),
     },
   },
-  // experiments: {
-  //   outputModule: true,
-  // },
   plugins: [
     new ModuleFederationPlugin({
-      // library: { type: 'module'},
-
-        // For remotes (please adjust)
-        // name: "flightApp",
-        // filename: "remoteEntry.js",
-        // exposes: {
-        //     './Component': './apps/flight-app/src/app/app.component.ts',
-        // },
-
-        // For hosts (please adjust)
       remotes: {
-        //     "dashboard": "http://localhost:4200/remoteEntry.js",
-        //     "external": "http://localhost:4200/remoteEntry.js",
-        //     "flightAdmin": "http://localhost:4200/remoteEntry.js",
-        //     "luggage": "http://localhost:4200/remoteEntry.js",
-          "passenger": "passenger@http://localhost:3000/remoteEntry.js",
+        // 'dashboard': 'http://localhost:4200/remoteEntry.js',
+        // 'external': 'http://localhost:4200/remoteEntry.js',
+        // 'flightAdmin': 'http://localhost:4200/remoteEntry.js',
+        // 'luggage': 'http://localhost:4200/remoteEntry.js',
+        'passenger': 'passenger@http://localhost:3000/remoteEntry.js',
       },
 
       shared: share({
@@ -53,8 +39,6 @@ module.exports = {
 
         ...sharedMappings.getDescriptors(),
       }),
-
-      sharedMappings
     }),
     sharedMappings.getPlugin()
   ],

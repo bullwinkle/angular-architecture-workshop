@@ -1,6 +1,4 @@
-/* eslint-disable no-restricted-syntax */
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { AuthLibService } from '@flight-workspace/shared/auth-lib';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -11,29 +9,26 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./home.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   expertMode = false;
-  needsLogin$: Observable<boolean> | undefined;
+  needsLogin$: Observable<boolean>;
 
   get userName(): string {
     return this.authService.user ?? '';
   }
 
-  constructor(private route: ActivatedRoute, public authService: AuthLibService) {
-  }
-
-  ngOnInit() {
+  constructor(public authService: AuthLibService) {
     this.needsLogin$ = this.authService.user$.pipe(map((it) => !it));
   }
 
   changed($event: CustomEvent): void {
-    console.debug('$event.detail ', $event.detail);
+    window.console.debug('$event.detail ', $event.detail);
 
     this.expertMode = $event.detail;
   }
 
   login(): void {
-    this.authService.login('max', '');
+    this.authService.login('DummyUser', '1234');
   }
 
   logout(): void {

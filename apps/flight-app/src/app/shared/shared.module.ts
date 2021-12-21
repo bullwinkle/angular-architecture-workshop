@@ -5,7 +5,7 @@ import {CityPipe} from './pipes/city.pipe';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
   ],
   declarations: [
     CityPipe,

@@ -1,9 +1,8 @@
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-const mf = require("@angular-architects/module-federation/webpack");
-const path = require("path");
-const share = mf.share;
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const {share, SharedMappings} = require('@angular-architects/module-federation/webpack');
+const path = require('path');
 
-const sharedMappings = new mf.SharedMappings();
+const sharedMappings = new SharedMappings();
 sharedMappings.register(
   path.join(__dirname, '../../tsconfig.base.json'),
   ['@flight-workspace/shared/auth-lib']);
@@ -53,7 +52,6 @@ module.exports = {
 
           ...sharedMappings.getDescriptors(),
         })
-
     }),
     sharedMappings.getPlugin()
   ],

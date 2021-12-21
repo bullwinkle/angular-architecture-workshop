@@ -1,6 +1,7 @@
 /* eslint-disable no-restricted-syntax */
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthLibService } from '@flight-workspace/shared/auth-lib';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -13,13 +14,17 @@ import { map } from 'rxjs/operators';
 export class HomeComponent implements OnInit {
   expertMode = false;
   needsLogin$: Observable<boolean> | undefined;
-  _userName = '';
 
   get userName(): string {
-    return this._userName;
+    return this.authService.user ?? '';
   }
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, public authService: AuthLibService) {
+  }
+
+  ngOnInit() {
+    this.needsLogin$ = this.authService.user$.pipe(map((it) => !it));
+  }
 
   changed($event: CustomEvent): void {
     console.debug('$event.detail ', $event.detail);
@@ -27,17 +32,11 @@ export class HomeComponent implements OnInit {
     this.expertMode = $event.detail;
   }
 
-  ngOnInit() {
-    this.needsLogin$ = this.route.params.pipe(
-      map((params) => !!params['needsLogin'])
-    );
-  }
-
   login(): void {
-    this._userName = 'Login will be implemented in another exercise!';
+    this.authService.login('max', '');
   }
 
   logout(): void {
-    this._userName = '';
+    this.authService.logout();
   }
 }

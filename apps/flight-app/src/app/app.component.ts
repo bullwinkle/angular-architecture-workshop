@@ -13,6 +13,5 @@ export class AppComponent {
   constructor(private loggerService: LoggerService, private authService: AuthLibService) {
     this.loggerService.log('log');
     this.loggerService.debug('debug');
-    this.authService.login('Max', '');
   }
 }

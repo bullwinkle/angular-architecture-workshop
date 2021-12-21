@@ -1,9 +1,9 @@
+import { loadRemoteModule } from '@angular-architects/module-federation';
 import { Routes } from '@angular/router';
 import { AirportComponent } from './airport/airport.component';
 import { FlightBookingComponent } from './flight-booking.component';
 import { FlightEditComponent } from './flight-edit/flight-edit.component';
 import { FlightSearchComponent } from './flight-search/flight-search.component';
-import { PassengerSearchComponent } from './passenger-search/passenger-search.component';
 
 export const FLIGHT_BOOKING_ROUTES: Routes = [
   {
@@ -20,7 +20,10 @@ export const FLIGHT_BOOKING_ROUTES: Routes = [
       },
       {
         path: 'passenger-search',
-        component: PassengerSearchComponent,
+        loadChildren: () => loadRemoteModule<PassengerMf>({
+          remoteName: 'passenger',
+          exposedModule: './module',
+        }).then(esm => esm.PassengerModule),
       },
       {
         path: 'flight-edit/:id',

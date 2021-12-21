@@ -22,7 +22,6 @@ export const APP_ROUTES: Routes = [
   {
     path: 'mf-passenger',
     loadChildren: () => loadRemoteModule<PassengerMf>({
-      // remoteEntry: 'http://localhost:3000/remoteEntry.js',
       remoteName: 'passenger',
       exposedModule: './module',
     }).then(esm => esm.PassengerModule),

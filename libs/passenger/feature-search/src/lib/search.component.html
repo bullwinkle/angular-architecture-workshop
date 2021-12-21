@@ -6,8 +6,6 @@
       <h2 class="title">Passenger Search</h2>
     </div>
     <div class="content">
-      <div>User: {{user}}</div>
-
       <form>
 
         <div class="form-group">
@@ -25,8 +23,8 @@
             Search
           </button>
 
-          <div *ngIf="passengers.length > 0">
-            {{ passengers.length }} passengers found!
+          <div *ngIf="$any(passengers)?.length > 0">
+            {{ $any(passengers)?.length }} passengers found!
           </div>
 
         </div>

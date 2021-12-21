@@ -1,21 +1,21 @@
-<div class="card">
-  <div class="header">
+<div class="card" *ngIf="{ needsLogin:needsLogin$ | async } as ctx">
+  <div class="header" *ngIf="!ctx.needsLogin">
     <h1 class="title">Welcome {{ userName }}</h1>
   </div>
   <div class="content">
-    <div *ngIf="needsLogin$ && needsLogin$ | async" class="alert alert-warning">
+    <div *ngIf="ctx.needsLogin" class="alert alert-warning">
       You have been redirected to this page because you don't have the necessary
       rights for the reqeusted action. Login with a respective user account!
     </div>
 
-    <button (click)="login()" class="btn btn-default">Login</button>
-    <button (click)="logout()" class="btn btn-default">Logout</button>
+    <button *ngIf="ctx.needsLogin" (click)="login()" class="btn btn-default">Login</button>
+    <button *ngIf="!ctx.needsLogin" (click)="logout()" class="btn btn-default">Logout</button>
   </div>
 </div>
 
 <div>&nbsp;</div>
 
 <div>
-  <!-- <custom-checkbox [value]="expertMode" (changed)="changed($event)" label="Expert Mode"></custom-checkbox>  
+  <!-- <custom-checkbox [value]="expertMode" (changed)="changed($event)" label="Expert Mode"></custom-checkbox>
   {{expertMode}} -->
 </div>

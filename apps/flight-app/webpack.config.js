@@ -53,6 +53,8 @@ module.exports = {
 
         ...sharedMappings.getDescriptors(),
       }),
+
+      sharedMappings
     }),
     sharedMappings.getPlugin()
   ],

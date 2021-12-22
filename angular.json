@@ -559,6 +559,12 @@
             "passWithNoTests": true
           }
         }
+      },
+      "i18n": {
+        "locales": {
+          "de": "apps/flight-app/i18n/messages.de.xlf"
+        },
+        "sourceLocale": "en-US"
       }
     },
     "flight-app-e2e": {

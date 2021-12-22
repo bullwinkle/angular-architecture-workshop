@@ -1,6 +1,6 @@
 <div class="card" *ngIf="{ needsLogin:needsLogin$ | async } as ctx">
   <div class="header" *ngIf="!ctx.needsLogin">
-    <h1 class="title">Welcome {{ userName }}</h1>
+    <h1 class="title" i18n="meaning|description@@main.title">Welcome {{ userName }}</h1>
   </div>
   <div class="content">
     <div *ngIf="ctx.needsLogin" class="alert alert-warning">

@@ -2,6 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 import {SharedModule} from '../shared/shared.module';
 import {FlightBookingComponent} from './flight-booking.component';
 import {FLIGHT_BOOKING_ROUTES} from './flight-booking.routes';
@@ -16,7 +17,8 @@ import { AirportComponent } from './airport/airport.component';
     CommonModule,
     FormsModule,
     SharedModule.forChild(),
-    RouterModule.forChild(FLIGHT_BOOKING_ROUTES)
+    RouterModule.forChild(FLIGHT_BOOKING_ROUTES),
+    TranslateModule.forChild()
   ],
   declarations: [
     FlightSearchComponent,
